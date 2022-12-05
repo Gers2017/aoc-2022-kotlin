@@ -17,8 +17,8 @@ fun part1(input: List<List<UInt>>) {
 
 fun part2(input: List<List<UInt>>) {
     val sum = input.chunked(3).fold(0) { acc, chunk ->
-        val (a,b,c) = chunk
-        val common = a.firstOrNull { b.contains(it) && c.contains(it) } ?:error("No common item found")
+        val (a, b, c) = chunk
+        val common = a.firstOrNull { b.contains(it) && c.contains(it) } ?: error("No common item found")
         acc + common.toInt()
     }
 
