@@ -1,15 +1,33 @@
 fun main() {
-    val input = Input("Day02").lines()
+    val input = Input("Day02").lines().map { line -> line.split(" ") }
     part1(input)
     part2(input)
 }
 
+fun part1(input: List<List<String>>) {
+    val total = input.map { moves -> moves.map { it.toMove() } }
+        .fold(0) { acc, (opponent, player) ->
+            acc + outcome(player, opponent)
+        }
+    println("Part1: $total")
+}
+
+fun part2(input: List<List<String>>) {
+    val total = input.map { (opponent, player) ->
+        val opponentMove = opponent.toMove()
+        val playerMove = player.toStrategyMove(opponentMove)
+        listOf(opponentMove, playerMove)
+    }.fold(0) { acc, (opponentMove, playerMove) ->
+        acc + outcome(playerMove, opponentMove)
+    }
+
+    println("Part2: $total")
+}
+
 typealias Move = Int
 
-class Turn(val self: Move, val opp: Move) {}
-
-fun Move.winnerAgainst(): Move = if (this - 1 >= 1) this - 1 else 3
-fun Move.loserAgainst(): Move = if (this + 1 <= 3) this + 1 else 1
+fun Move.getLooserMove(): Move = if (this - 1 >= 1) this - 1 else 3
+fun Move.getWinnerMove(): Move = if (this + 1 <= 3) this + 1 else 1
 
 fun String.toMove(): Move = when (this) {
     "A", "X" -> 1
@@ -18,47 +36,15 @@ fun String.toMove(): Move = when (this) {
     else -> error("Invalid string \"$this\" to move")
 }
 
-fun String.toStrategy(oppMove: Move) = when (this) {
-    "X" -> oppMove.winnerAgainst() // let opponent win
+fun String.toStrategyMove(oppMove: Move) = when (this) {
+    "X" -> oppMove.getLooserMove() // let opponent win
     "Y" -> oppMove // draw
-    "Z" -> oppMove.loserAgainst() // win the match
+    "Z" -> oppMove.getWinnerMove() // win the match
     else -> error("Invalid string \"$this\" to move")
 }
 
-fun outcome(myMove: Move, oppMove: Move): Int = when (oppMove) {
-    myMove.winnerAgainst() -> {
-        myMove + 6 // win
-    }
-
-    myMove.loserAgainst() -> {
-        myMove // loose
-    }
-
-    else -> {
-        myMove + 3 // draw
-    }
-}
-
-fun part1(input: List<String>) {
-    val total = input.map { line ->
-        val (a, b) = line.split(" ").map { it.toMove() }
-        Turn(b, a)
-    }.fold(0) { acc, turn ->
-        acc + outcome(turn.self, turn.opp)
-    }
-
-    println("Part1: $total")
-}
-
-fun part2(input: List<String>) {
-    val total = input.map { line ->
-        val (a, b) = line.split(" ")
-        val oppMove = a.toMove()
-        val myMove = b.toStrategy(oppMove)
-        Turn(myMove, oppMove)
-    }.fold(0) { acc, turn ->
-        acc + outcome(turn.self, turn.opp)
-    }
-
-    println("Part2: $total")
+fun outcome(player: Move, opponent: Move): Int = when (opponent) {
+    player.getLooserMove() -> player + 6 // win
+    player.getWinnerMove() -> player // loose
+    else -> player + 3 // draw
 }
