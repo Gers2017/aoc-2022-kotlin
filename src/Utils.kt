@@ -12,5 +12,5 @@ class Input(private val filename: String) {
     fun raw() = text
     fun lines() = text.lines()
     fun doubleLines() = text.split("\n\n")
-    fun chuncked(size: Int) = lines().chunked(size)
+    fun chunked(size: Int) = lines().chunked(size)
 }
