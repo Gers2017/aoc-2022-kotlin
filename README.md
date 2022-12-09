@@ -11,6 +11,7 @@ My kotlin solutions for Advent of code 2022
 | 5   |          Supply Stacks 📦          | [{Aoc}](https://adventofcode.com/2022/day/5)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day05.kt) |
 | 6   |      Day 6: Tuning Trouble 📜      | [{Aoc}](https://adventofcode.com/2022/day/6)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day06.kt) |
 | 7   | Day 7: No Space Left On Device 🗂️ | [{Aoc}](https://adventofcode.com/2022/day/7)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day07.kt) |
+| 8   |    Day 8: Treetop Tree House 🌲    | [{Aoc}](https://adventofcode.com/2022/day/8)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day08.kt) |
 
 #### Input files
 
