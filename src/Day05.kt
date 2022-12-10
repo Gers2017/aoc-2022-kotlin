@@ -30,18 +30,18 @@ fun lineToCrates(line: String): List<String> =
         line.slice(i - 3 until end)
     }
 
-class Pair<T, U>(val left: T, val right: U) {}
+//class Pair<T, U>(val left: T, val right: U) {}
 
 fun getColumns(listOfCrates: List<List<String>>): MutableMap<Int, Stack<String>> {
     return listOfCrates.reversed().flatMap { crates ->
         crates.mapIndexed { i, crate -> Pair(i, crate) }
-    }.filter { it.right.isNotBlank() }
+    }.filter { it.second.isNotBlank() }
         .fold(mutableMapOf<Int, Stack<String>>()) { columns, pair ->
-            if (columns.containsKey(pair.left)) {
-                columns[pair.left]?.push(pair.right)
+            if (columns.containsKey(pair.first)) {
+                columns[pair.first]?.push(pair.second)
             } else {
-                columns[pair.left] = Stack<String>()
-                columns[pair.left]!!.push(pair.right)
+                columns[pair.first] = Stack<String>()
+                columns[pair.first]!!.push(pair.second)
             }
 
             columns
