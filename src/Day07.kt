@@ -90,8 +90,8 @@ class Parser(private val source: List<String>) {
     fun getFile(): List<String> = peek().split(" ")
 }
 
-open class Entry(val name: String) {
-    open fun getSize(): UInt = 0u
+abstract class Entry(val name: String) {
+    abstract fun getSize(): UInt
 }
 
 class Dir(
@@ -99,7 +99,7 @@ class Dir(
     val parent: Dir? = null,
     val entries: MutableList<Entry> = mutableListOf(),
 ) : Entry(name) {
-    private fun getRoot(): Entry = parent?.getRoot() ?: this
+    fun getRoot(): Entry = parent?.getRoot() ?: this
 
     fun addEntry(e: Entry) = entries.add(e)
 
