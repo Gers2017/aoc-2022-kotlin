@@ -16,6 +16,7 @@ Easy: 🟢, Medium: 🟡, Challenging: 🟣, Hard: 🔴
 | 8   |    Treetop Tree House 🌲    |  [{Aoc}](https://adventofcode.com/2022/day/8)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day08.kt) | 🟢         |
 | 9   |       Rope Bridge 🪢        |  [{Aoc}](https://adventofcode.com/2022/day/9)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day09.kt) | 🟣         |
 | 10  |     Cathode-Ray Tube 👾     | [{Aoc}](https://adventofcode.com/2022/day/10)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day10.kt) | 🟡         |
+| 11  |   Monkey in the Middle 🐒   | [{Aoc}](https://adventofcode.com/2022/day/11)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day11.kt) | 🟣         |
 
 ### Input files
 
