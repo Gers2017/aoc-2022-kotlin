@@ -20,7 +20,7 @@ fun main() {
     println("Monkey Business: ${mostActive[0] * mostActive[1]}")
 }
 
-typealias Operation = (x: ULong, p: ULong) -> ULong
+typealias Operation = (x: ULong) -> ULong
 
 class Monkey(
     private val id: Int,
@@ -34,14 +34,14 @@ class Monkey(
     fun inspect(monkeys: MutableList<Monkey>, p: ULong, relief: ULong = 0.toULong()) {
         while (items.size > 0) {
             val item = items.removeFirst()
-            var worryLevel = operation(item, p)
+            var worryLevel = operation(item)
             if (relief > 0.toULong())
                 worryLevel /= relief
 
             val targetMonkeyID = test.getMonkeyID(worryLevel)
 
             // throw to target
-            monkeys[targetMonkeyID].items.add(worryLevel)
+            monkeys[targetMonkeyID].items.add(worryLevel % p)
             inspectedCount++
         }
     }
@@ -53,7 +53,7 @@ class Monkey(
 
             var id = 0
             val items = mutableListOf<ULong>()
-            var operation: Operation = fun(x: ULong, p: ULong): ULong = x % p
+            var operation: Operation = fun(x: ULong): ULong = x
             var test = MonkeyTest(0u, 0, 0)
 
             while (iter.hasNext()) {
@@ -73,12 +73,12 @@ class Monkey(
                         operation = if (isNumeric) {
                             val y = other.toULong()
                             when (op) {
-                                "*" -> fun(x: ULong, p: ULong): ULong = ((x % p) * (y % p)).mod(p)
-                                "+" -> fun(x: ULong, p: ULong): ULong = ((x % p) + (y % p)).mod(p)
+                                "*" -> fun(x: ULong): ULong = x * y
+                                "+" -> fun(x: ULong): ULong = x + y
                                 else -> error("Invalid operator")
                             }
                         } else {
-                               fun(x: ULong, p: ULong): ULong = ((x % p) * (x % p)).mod(p)
+                            fun(x: ULong): ULong = x * x
                         }
 
                     } else if (m.startsWith("test: ")) {
