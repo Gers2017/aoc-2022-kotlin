@@ -20,6 +20,7 @@ Easy: 🟢, Medium: 🟡, Challenging: 🟣, Hard: 🔴
 | 12  | Hill Climbing Algorithm 🐑  | [{Aoc}](https://adventofcode.com/2022/day/12)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day12.kt) | 🟡         |
 | 13  |     Distress Signal ☠️      | [{Aoc}](https://adventofcode.com/2022/day/13)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day13.kt) | 🟣         |
 | 14  |    Regolith Reservoir ⌛     | [{Aoc}](https://adventofcode.com/2022/day/14)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day14.kt) | 🟡         |
+| 15  |  Beacon Exclusion Zone 🔎   | [{Aoc}](https://adventofcode.com/2022/day/15)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day15.kt) | 🔴         |
 
 ### Input files
 
