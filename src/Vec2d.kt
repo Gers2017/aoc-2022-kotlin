@@ -46,4 +46,15 @@ data class Vector2d(var x: Float, var y: Float) {
 data class Vec2dInt(var x: Int, var y: Int) {
     operator fun plus(other: Vec2dInt): Vec2dInt = Vec2dInt(x + other.x, y + other.y)
     operator fun minus(other: Vec2dInt): Vec2dInt = Vec2dInt(x - other.x, y - other.y)
+    fun magnitude(): Float = sqrt((x * x.toFloat()) + (y * y).toFloat())
+    fun normalized(): Vec2dInt = let {
+        val mag = magnitude()
+        Vec2dInt((x / mag).toInt(), (y / mag).toInt())
+    }
+    fun directionTo(other: Vec2dInt): Vec2dInt = (other - this).normalized()
+    fun distanceTo(other: Vec2dInt): Int = let {
+        val dx = abs(x - other.x)
+        val dy = abs(y - other.y)
+        sqrt((dx * dx).toFloat() + (dy * dy).toFloat()).toInt()
+    }
 }
