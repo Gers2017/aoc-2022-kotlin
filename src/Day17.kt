@@ -1,6 +1,26 @@
 import kotlin.math.absoluteValue
 import kotlin.math.min
 
+fun main() {
+    val input = Input("Day17").raw()
+    part2(input)
+}
+
+fun part1(input: String) {
+    val day17 = Day17(input)
+
+    repeat(2022) {
+        day17.simulate()
+    }
+
+    println(day17.getHeight())
+}
+
+fun part2(input: String) {
+    val day17 = Day17(input)
+    println(day17.simulateWithJumps(1000000000000L))
+}
+
 private data class CaveState(val shapeIndex: Int, val jetIndex: Int, val ceiling: List<Int>)
 private data class CaveSnapshot(val height: Int, val rockCount: Int)
 private class Day17(line: String) {
@@ -72,7 +92,7 @@ private class Day17(line: String) {
         roomPoints.addAll(shape)
     }
 
-    fun simulateWithJump(targetRockCount: Long): Long {
+    fun simulateWithJumps(targetRockCount: Long): Long {
         while (true) {
             // simulate until cycle
             simulate()
@@ -81,18 +101,19 @@ private class Day17(line: String) {
             if (state in stateMap) { // found cycle
                 val snapshot = stateMap[state]!!
                 val heightDiff = getHeight() - snapshot.height
-                val rockCountDiff = rockCount - snapshot.rockCount
-                val cyclesToSkip = (targetRockCount / rockCountDiff) - 1
+                val rockCountDiff = rockCount - snapshot.rockCount // start second cycle - start of first cycle
 
-                // Skipped from start of second cycle to n cycle
-                val heightSkipped = heightDiff * cyclesToSkip
-                val rocksSkipped = rockCountDiff * cyclesToSkip
+                val skippedCycles = (targetRockCount / rockCountDiff) - 2
 
-                while ((rockCount - rockCountDiff + rocksSkipped) < targetRockCount) {
+                // Skipped from start of second cycle to start of last cycle
+                val heightSkipped = heightDiff * skippedCycles
+                val rocksSkipped = rockCountDiff * skippedCycles
+
+                while (rockCount + rocksSkipped < targetRockCount) {
                     simulate()
                 }
 
-                return (getHeight() - heightDiff) + heightSkipped
+                return getHeight() + heightSkipped
             }
 
             stateMap[state] = CaveSnapshot(getHeight(), rockCount)
@@ -127,27 +148,6 @@ fun Points.bottomY(): Int = maxOf { it.y }
 
 fun Points.getByMinYPoints(): List<Vec2dInt> =
     sortedBy { it.x }.groupBy { it.x }.entries.map { e -> Vec2dInt(e.key, e.value.minOf { it.y }) }
-
-fun main() {
-    val input = Input("Day17").raw()
-    part2(input)
-}
-
-fun part1(input: String) {
-    val day17 = Day17(input)
-
-    repeat(10) {
-        day17.simulate()
-    }
-
-    println(day17.getHeight())
-}
-
-fun part2(input: String) {
-    val day17 = Day17(input)
-    val res = day17.simulateWithJump(1000000000000L)
-    println(res)
-}
 
 fun jetsToVecList(line: String): List<Vec2dInt> =
     line.trim().map {
