@@ -28,11 +28,11 @@ fun main() {
     println(sandPoints.size)
 }
 
-val DOWN = Vector2d(0f, 1f)
-val DOWN_LEFT = Vector2d(-1f, 1f)
-val DOWN_RIGHT = Vector2d(1f, 1f)
 
 fun simulateSand(blocks: MutableSet<Vector2d>, floor: Float, stopY: Float): MutableSet<Vector2d> {
+    val DOWN = Vector2d(0f, 1f)
+    val DOWN_LEFT = Vector2d(-1f, 1f)
+    val DOWN_RIGHT = Vector2d(1f, 1f)
     val sandPoints = mutableSetOf<Vector2d>()
     var canSimulate = true
 

@@ -42,3 +42,8 @@ data class Vector2d(var x: Float, var y: Float) {
     }
 
 }
+
+data class Vec2dInt(var x: Int, var y: Int) {
+    operator fun plus(other: Vec2dInt): Vec2dInt = Vec2dInt(x + other.x, y + other.y)
+    operator fun minus(other: Vec2dInt): Vec2dInt = Vec2dInt(x - other.x, y - other.y)
+}
