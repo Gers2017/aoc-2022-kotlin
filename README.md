@@ -21,6 +21,12 @@ Easy: 🟢, Medium: 🟡, Challenging: 🟣, Hard: 🔴
 | 13  |     Distress Signal ☠️      | [{Aoc}](https://adventofcode.com/2022/day/13)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day13.kt) | 🟣         |
 | 14  |    Regolith Reservoir ⌛     | [{Aoc}](https://adventofcode.com/2022/day/14)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day14.kt) | 🟡         |
 | 15  |  Beacon Exclusion Zone 🔎   | [{Aoc}](https://adventofcode.com/2022/day/15)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day15.kt) | 🔴         |
+| 16  | Proboscidea Volcanium 🐘🌋  | [{Aoc}](https://adventofcode.com/2022/day/16)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day16.kt) | 🔴         |
+| 17  |     Pyroclastic Flow 🪨     | [{Aoc}](https://adventofcode.com/2022/day/17)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day17.kt) | 🟡         |
+| 18  |    Boiling Boulders 🧊🔥    | [{Aoc}](https://adventofcode.com/2022/day/18)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day18.kt) | 🟡         |
+| 19  |   Not Enough Minerals 🤖    | [{Aoc}](https://adventofcode.com/2022/day/19)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day19.kt) | 🟣         |
+| 20  | Grove Positioning System 🕵 | [{Aoc}](https://adventofcode.com/2022/day/20)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day20.kt) | 🟢         |
+| 21  |      Monkey Math 🐵🧮       | [{Aoc}](https://adventofcode.com/2022/day/21)  [[Code]](https://github.com/Gers2017/aoc-2022-kotlin/blob/main/src/Day21.kt) | 🟢         |
 
 ### Input files
 
@@ -134,4 +140,19 @@ type Motion {
     direction: Vector2d
     amount: Int
 }
+```
+
+### Day21
+```
+         (root)
+         /     \
+       (/)     (*)
+       / \     / \
+     (+) (4) (30) (5)
+     / \
+   (4) (*)
+       / \
+     (2) (-)
+         / \
+       (x) (3)
 ```
